@@ -1,0 +1,31 @@
+<Shell
+	x:Class="MauScan.AppShell"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:local="clr-namespace:MauScan"
+	Shell.NavBarIsVisible="False">
+
+	<FlyoutItem>
+		<Tab Title="Home">
+			<ShellContent
+				Title="Home"
+				ContentTemplate="{DataTemplate local:MainPage}" />
+		</Tab>
+		<Tab Title="Data">
+			<ShellContent
+				Title="Data"
+				ContentTemplate="{DataTemplate local:ListQRCodes}" />
+		</Tab>
+		<Tab Title="Generator">
+			<ShellContent
+				Title="Generator"
+				ContentTemplate="{DataTemplate local:GenerateQRCode}" />
+		</Tab>
+		<Tab Title="Desitka">
+			<ShellContent
+				Title="Desitka"
+				ContentTemplate="{DataTemplate local:KozelDesitka}" />
+		</Tab>
+
+	</FlyoutItem>
+</Shell>

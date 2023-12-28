@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maui="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
+             x:Class="MauScan.GenerateQRCode"
+             xmlns:conv="clr-namespace:MauScan.Convertes"
+             Title="">
+
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<conv:ColorRGBConverter x:Key="ColorRGBConverter" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ScrollView>
+		<StackLayout
+            Spacing="25"
+            Padding="30,30"
+            VerticalOptions="Center">
+
+			<Entry x:Name="textInput" Placeholder="Enter text for QR code" />
+
+			<Label Text="Barcode Width" />
+			<Entry Text="{Binding BarcodeWidth, Mode=TwoWay}" />
+
+			<Label Text="Barcode Height" />
+			<Entry Text="{Binding BarcodeHeight, Mode=TwoWay}" />
+
+			<Label Text="Barcode Margin" />
+			<Entry Text="{Binding BarcodeMargin, Mode=TwoWay}" />
+
+			<!-- Color Picker with Sliders -->
+			<Label Text="Select Background Color" />
+			<StackLayout Spacing="10">
+				<Label Text="Select Background Color" />
+				<StackLayout Spacing="10">
+					<Slider x:Name="BackgroundRedSlider" MinimumTrackColor="Red" MaximumTrackColor="Gray" ValueChanged="ColorSlider_ValueChanged" />
+					<Slider x:Name="BackgroundGreenSlider" MinimumTrackColor="Green" MaximumTrackColor="Gray" ValueChanged="ColorSlider_ValueChanged" />
+					<Slider x:Name="BackgroundBlueSlider" MinimumTrackColor="Blue" MaximumTrackColor="Gray" ValueChanged="ColorSlider_ValueChanged" />
+				</StackLayout>
+
+				<Label Text="Select Foreground Color" />
+				<StackLayout Spacing="10">
+					<Slider x:Name="ForegroundRedSlider" MinimumTrackColor="Red" MaximumTrackColor="Gray" ValueChanged="ColorSlider_ValueChanged" />
+					<Slider x:Name="ForegroundGreenSlider" MinimumTrackColor="Green" MaximumTrackColor="Gray" ValueChanged="ColorSlider_ValueChanged" />
+					<Slider x:Name="ForegroundBlueSlider" MinimumTrackColor="Blue" MaximumTrackColor="Gray" ValueChanged="ColorSlider_ValueChanged" />
+				</StackLayout>
+			</StackLayout>
+
+
+			<Button Text="Generate QR Code" Clicked="GenerateQRCode_Clicked" />
+			<maui:BarcodeImage x:Name="barcodeImage"
+			                   BarcodeMargin="{Binding BarcodeMargin}"
+			                   WidthRequest="{Binding BarcodeWidth}"
+			                   HeightRequest="{Binding BarcodeHeight}"
+			                   BarcodeFormat="QR_CODE"
+			                   BarcodeBackground="{Binding BarcodeBackgroundColor, Converter={StaticResource ColorRGBConverter}}"
+			                   BarcodeForeground="{Binding BarcodeForegroundColor, Converter={StaticResource ColorRGBConverter}}" />
+
+		</StackLayout>
+	</ScrollView>
+</ContentPage>
