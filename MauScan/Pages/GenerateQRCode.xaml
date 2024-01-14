@@ -28,7 +28,6 @@
 			<Label Text="Barcode Margin" />
 			<Entry Text="{Binding BarcodeMargin, Mode=TwoWay}" />
 
-			<!-- Color Picker with Sliders -->
 			<Label Text="Select Background Color" />
 			<StackLayout Spacing="10">
 				<Label Text="Select Background Color" />

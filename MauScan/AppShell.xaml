@@ -21,11 +21,6 @@
 				Title="Generator"
 				ContentTemplate="{DataTemplate local:GenerateQRCode}" />
 		</Tab>
-		<Tab Title="Desitka">
-			<ShellContent
-				Title="Desitka"
-				ContentTemplate="{DataTemplate local:KozelDesitka}" />
-		</Tab>
 
 	</FlyoutItem>
 </Shell>

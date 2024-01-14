@@ -2,6 +2,7 @@
 using MauScan.Data;
 using System.Runtime.CompilerServices;
 using MAUISql.Models;
+using Camera.MAUI;
 
 namespace MauScan
 {

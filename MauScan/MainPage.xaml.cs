@@ -126,7 +126,7 @@ namespace MauScan
 
 			else
 			{
-				DisplayAlert("Invalid Add QR Code", "You cannot add qr code because he it is null", "OK");
+				DisplayAlert("Invalid Add QR Code", "You cannot add qr code because it is null", "OK");
 			}
 		}
 
@@ -171,16 +171,17 @@ namespace MauScan
 		{
 			try
 			{
-
 				using (Parser parser = new Parser(fileName))
 				{
-					IEnumerable<PageBarcodeArea> barcodes = null;
+					IEnumerable<PageBarcodeArea> barcodes;
 
-						barcodes = parser.GetBarcodes();
-					
+					barcodes = parser.GetBarcodes();
+
 
 					foreach (PageBarcodeArea barcode in barcodes)
 					{
+						
+						
 						QRCode newQRCode = new QRCode
 						{
 							Text = barcode.Value,
@@ -201,6 +202,7 @@ namespace MauScan
 		}
 
 
+
 		private async void OpenExtractedURL(string url)
 		{
 			if (Uri.TryCreate(url, UriKind.Absolute, out Uri uri) &&
@@ -213,6 +215,7 @@ namespace MauScan
 				DisplayAlert("Invalid URL", "The extracted URL is not valid.", "OK");
 			}
 		}
+
 		private void CopyBarcode_Clicked(object sender, EventArgs e)
 		{
 			Clipboard.SetTextAsync(barcodeResult.Text);
